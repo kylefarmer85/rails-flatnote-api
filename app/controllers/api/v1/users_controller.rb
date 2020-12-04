@@ -7,17 +7,19 @@ class Api::V1::UsersController < ApplicationController
 
   def show
       user = User.find(params[:id])
+      # break user and comments into two keys
       render json: user
   end 
 
   def create
+    
     user = User.find_or_create_by(username: params[:username])
     
     if user.save
-        render json: user
+        render json: { user: {id: user.id, username: user.username}, notes: user.notes}
     else
         # render json: user.errors.full_messages
-        render json: {error: "Please enter a username and email!"}, status: 403
+        render json: {error: "Please try again"}, status: 401
     end
   end
 
