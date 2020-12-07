@@ -11,6 +11,7 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def create
+  
       note = Note.new(note_params)
       
       if note.save 
