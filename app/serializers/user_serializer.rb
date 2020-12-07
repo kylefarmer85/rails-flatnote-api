@@ -1,4 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
   has_many :notes
-  attributes :id, :username
+  attributes :id, :username, :email
 end
